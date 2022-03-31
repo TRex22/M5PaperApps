@@ -56,19 +56,20 @@ void key_synctime_cb(epdgui_args_vector_t &args)
     info.setTextColor(0);
     info.setTextDatum(CC_DATUM);
     uint8_t language = GetLanguage();
+
     if(WiFi.status() != WL_CONNECTED)
     {
         if(language == LANGUAGE_JA)
         {
-            info.drawString("WLANが接続いません", 150, 55);
+            info.drawString("WiFiが接続いません", 150, 55);
         }
         else if(language == LANGUAGE_ZH)
         {
-            info.drawString("WLAN未连接", 150, 55);
+            info.drawString("WiFi未连接", 150, 55);
         }
         else
         {
-            info.drawString("WLAN not connected", 150, 55);
+            info.drawString("WiFi not connected", 150, 55);
         }
         info.pushCanvas(120, 430, UPDATE_MODE_GL16);
         M5.EPD.WriteFullGram4bpp(GetWallpaper());
@@ -79,6 +80,7 @@ void key_synctime_cb(epdgui_args_vector_t &args)
         M5.EPD.UpdateFull(UPDATE_MODE_GL16);
         return;
     }
+    
     LoadingAnime_32x32_Start(532 - 15 - 32, 220 + 14);
     bool ret = SyncNTPTime();
     LoadingAnime_32x32_Stop();

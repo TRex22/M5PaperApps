@@ -214,7 +214,7 @@ void Frame_FactoryTest::drawPassCount(m5epd_update_mode_t mode)
 void Frame_FactoryTest::scan(String *ssid, int32_t *rssi)
 {
     WiFi.mode(WIFI_STA);
-    WiFi.disconnect();
+    // WiFi.disconnect(); // commented out in M5PaperOS
     WiFi.scanNetworks(true);
 
     int wifi_num;
