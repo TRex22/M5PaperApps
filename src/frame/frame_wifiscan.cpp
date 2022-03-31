@@ -55,7 +55,7 @@ Frame_WifiScan::Frame_WifiScan(void)
     if(_language == LANGUAGE_JA)
     {
         exitbtn("ホーム");
-        _canvas_title->drawString("WLAN", 270, 34);
+        _canvas_title->drawString("WiFi", 270, 34);
     }
     else if(_language == LANGUAGE_ZH)
     {
@@ -65,7 +65,7 @@ Frame_WifiScan::Frame_WifiScan(void)
     else
     {
         exitbtn("Home");
-        _canvas_title->drawString("WLAN", 270, 34);
+        _canvas_title->drawString("WiFi", 270, 34);
     }
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void*)(&_is_run));
@@ -172,7 +172,7 @@ int Frame_WifiScan::scan()
         }
         if(connect_wifi_idx == -1)
         {
-            WiFi.disconnect();
+            // WiFi.disconnect(); // commented out in M5PaperOS
             _key_wifi[0]->SetEnable(true);
             _connected = 0;
             for(int i = 1; i < MAX_BTN_NUM; i++)
@@ -316,7 +316,7 @@ void Frame_WifiScan::Connect()
     _connected = 1;
 
     SetWifi(_connect_ssid, _connect_password);
-    // SyncNTPTime();
+    SyncNTPTime();
     scan();
 }
 

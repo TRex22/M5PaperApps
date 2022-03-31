@@ -208,7 +208,7 @@ void Frame_Main::AppName(m5epd_update_mode_t mode)
     _names->setTextSize(20);
     _names->fillCanvas(0);
     uint8_t language = GetLanguage();
-    _names->drawString("WLAN", 20 + 46 + 3 * 136, 16);
+    _names->drawString("WiFi", 20 + 46 + 3 * 136, 16);
     if(language == LANGUAGE_JA)
     {
         _names->drawString("工場テスト", 20 + 46, 16);
